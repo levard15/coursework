@@ -1,0 +1,217 @@
+#include <stdio.h>
+#include <memory.h>
+#include <iostream>
+class Student
+{
+    private:
+    struct activity
+    {
+        int sessionnum;
+        int subjlim;
+        char subj[10][21];
+        char value[10];
+    };
+    struct data
+    {
+        char surname[21];
+        char name[21];
+        char patronymic[21];
+        char bday[21];
+        char bmonth[21];
+        char bdyear[21];
+        char enterdate[21];
+        char department[21];
+        char faculty[21];
+        char group[21];
+        char gradebook[21];
+        char sex[21];
+        activity student_activity[10];
+    };
+    data studentdata[1];
+    public:
+    int exist = 0;
+    int score = 0;
+    int goodstudent = 0;
+    int seslim = 0;
+    Student()
+    {
+    }
+    ~Student()
+    {
+    }
+    void set_data(int N, const char *value)
+    {
+        if(N == 1)
+        {
+            memcpy(studentdata->surname, value, sizeof(char)*21 ); // при передачи использую &название[0]
+        }
+        if(N == 2)
+        {
+            memcpy(studentdata->name, value, sizeof(char)*21 ); 
+        }
+        if(N == 3)
+        {
+            memcpy(studentdata->patronymic, value, sizeof(char)*21 ); 
+        }
+        if(N == 4)
+        {
+            memcpy(studentdata->bday, value, sizeof(char)*21 ); 
+        }
+        if(N == 5)
+        {
+            memcpy(studentdata->bmonth, value, sizeof(char)*21 );
+        }
+        if(N == 6)
+        {
+            memcpy(studentdata->bdyear, value, sizeof(char)*21 ); 
+        }
+        if(N == 7)
+        {
+            memcpy(studentdata->enterdate, value, sizeof(char)*21 ); 
+        }
+        if(N == 8)
+        {
+            memcpy(studentdata->department, value, sizeof(char)*21 ); 
+        }
+        if(N == 9)
+        {
+            memcpy(studentdata->faculty, value, sizeof(char)*21 );
+        }
+        if(N == 10)
+        {
+            memcpy(studentdata->group, value, sizeof(char)*21 );
+        }
+        if(N == 11)
+        {
+            memcpy(studentdata->gradebook, value, sizeof(char)*21 );
+        }
+        if(N == 12)
+        {
+            memcpy(studentdata->sex, value, sizeof(char)*21 );
+        }
+
+    }
+    void SetActivitySubjectLimit( int snum, int subjlim)
+    {
+        studentdata->student_activity[snum].subjlim = subjlim;
+    }
+    void set_activity(int N, int snum, const char *subvalue, char value)
+    {
+
+        studentdata->student_activity[snum].sessionnum = snum;
+        if(N == 1)
+        {
+            memcpy(studentdata->student_activity[snum].subj[0], subvalue, sizeof(char)*21 );
+            studentdata->student_activity[snum].value[0] = value; 
+        }
+        if(N == 2)
+        {
+            memcpy(studentdata->student_activity[snum].subj[1], subvalue, sizeof(char)*21 ); 
+            studentdata->student_activity[snum].value[1] = value; 
+        }
+        if(N == 3)
+        {
+            memcpy(studentdata->student_activity[snum].subj[2], subvalue, sizeof(char)*21 ); 
+            studentdata->student_activity[snum].value[2] = value; 
+        }
+        if(N == 4)
+        {
+            memcpy(studentdata->student_activity[snum].subj[3], subvalue, sizeof(char)*21 ); 
+            studentdata->student_activity[snum].value[3] = value;  
+        }
+        if(N == 5)
+        {
+            memcpy(studentdata->student_activity[snum].subj[4], subvalue, sizeof(char)*21 ); 
+            studentdata->student_activity[snum].value[4] = value; 
+        }
+        if(N == 6)
+        {
+            memcpy(studentdata->student_activity[snum].subj[5], subvalue, sizeof(char)*21 );
+            studentdata->student_activity[snum].value[5] = value; 
+        }
+        if(N == 7)
+        {
+            memcpy(studentdata->student_activity[snum].subj[6], subvalue, sizeof(char)*21 ); 
+            studentdata->student_activity[snum].value[6] = value;  
+        }
+        if(N == 8)
+        {
+            memcpy(studentdata->student_activity[snum].subj[7], subvalue, sizeof(char)*21 ); 
+            studentdata->student_activity[snum].value[7] = value; 
+        }
+        if(N == 9)
+        {
+            memcpy(studentdata->student_activity[snum].subj[8], subvalue, sizeof(char)*21 );
+            studentdata->student_activity[snum].value[8] = value;  
+        }
+        if(N == 10)
+        {
+            memcpy(studentdata->student_activity[snum].subj[9] , subvalue, sizeof(char)*21 );
+            studentdata->student_activity[snum].value[9] = value;   
+        }
+        if(N == 11)
+        {
+            for (int i = 0; i <= 10; i ++)
+            {
+                studentdata->student_activity[snum].value[i] = subvalue[i];
+            }
+        }
+    }
+    const char* GetSurname() { return studentdata[0].surname; }
+    const char* GetName() { return studentdata[0].name; }
+    const char* GetPatronymic() { return studentdata[0].patronymic; }
+    const char* GetBirthday() { return studentdata[0].bday; }
+    const char* GetBirthmonth() { return studentdata[0].bmonth; }
+    const char* GetBirthyear() { return studentdata[0].bdyear; }
+    const char* GetEnterdate() { return studentdata[0].enterdate; }
+    const char* GetDepartment() { return studentdata[0].department; }
+    const char* GetFaculty() { return studentdata[0].faculty; }
+    const char* GetGroup() { return studentdata[0].group; }
+    const char* GetGradebook() { return studentdata[0].gradebook; }
+    const char* GetSex() { return studentdata[0].sex; }
+    const char* GetActivitySubject(int index, int subindex) { return studentdata[0].student_activity[index].subj[subindex]; }
+    int GetActivitySessionNumber(int index) { return studentdata[0].student_activity[index].sessionnum; }
+    int GetActivitySubjectLimit(int index) { return studentdata[0].student_activity[index].subjlim; }
+    const char* GetActivityValue(int index) { return studentdata[0].student_activity[index].value; }
+
+    void get_data()
+    {
+        std::cout << "Фамилия: " << studentdata->surname << std::endl;
+        std::cout << "Имя: " << studentdata->name << std::endl;
+        std::cout << "Отчество: " << studentdata->patronymic << std::endl;
+        std::cout << "Дата рождения: " << studentdata->bday << "." << studentdata->bmonth << "." << studentdata->bdyear << std::endl;
+        std::cout << "Год поступления: " << studentdata->enterdate << std::endl;
+        std::cout << "Институт: " << studentdata->department << std::endl;
+        std::cout << "Кафедра: " << studentdata->faculty << std::endl;
+        std::cout << "Группа: " << studentdata->group << std::endl;
+        std::cout << "Номер зачетной книжки: " << studentdata->gradebook << std::endl;
+        std::cout << "Пол: " << studentdata->sex << std::endl;
+        for (int i = 0; i <= seslim; i++)
+        {
+            std::cout << "Сессия номер - " << i+1;
+            for (int n = 0; n < studentdata->student_activity[i].subjlim; n++)
+                std::cout << std::endl << "Предмет: " << studentdata->student_activity[i].subj[n] << "  " << "Оценка: " << studentdata->student_activity[i].value[n] << std::endl;
+        }
+    }
+    void taskworker()
+    {
+        int limit = 0;
+        int badmarks = 0;
+        for (int i = 0; i <= seslim; i++)
+        {
+            limit += studentdata->student_activity[i].subjlim;
+            for (int b = 0; b < studentdata->student_activity[i].subjlim; b++)
+            {
+                score +=  int(studentdata->student_activity[i].value[b] - '0');
+                if(int(studentdata->student_activity[i].value[b] - '0') < 4)
+                {
+                    badmarks += 1;
+                }
+            }
+        }
+        if (badmarks * 2 <= limit)
+        {
+            goodstudent = 1;
+        }
+    }
+};
